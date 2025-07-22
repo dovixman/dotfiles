@@ -1,0 +1,47 @@
+tap "homebrew/cask"
+tap "homebrew/core"
+
+# Core tools
+brew "wget"
+brew "curl"
+brew "git"
+brew "git-delta"
+brew "watch"
+brew "tree"
+brew "chezmoi"
+
+# Encryption
+brew "age"
+brew "gpg"
+
+# Language version managers
+brew "mise"
+
+# CLI Tools
+brew "yq"
+brew "jq"
+brew "zoxide"
+
+# Development
+brew "lazygit"
+brew "tmux"
+
+# Shell & prompt
+brew "fish"
+brew "starship"
+
+# Kubernetes / DevOps
+brew "kubectl"
+brew "k9s"
+
+# Productivity
+brew "neovim"
+
+# Casks
+cask "arc"
+cask "raycast"
+cask "espanso"
+cask "maccy"
+cask "docker"
+cask "font-hack-nerd-font"
+cask "iterm2"
