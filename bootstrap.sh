@@ -25,7 +25,8 @@ fi
 # --- Init dotfiles ---
 if [ ! -d "$HOME/.local/share/chezmoi" ]; then
   log "Clonando y aplicando dotfiles desde $REPO..."
-  chezmoi init "$REPO" --apply
+  chezmoi init "$REPO" --prompt
+  chezmoi apply
 else
   log "chezmoi ya está inicializado."
 fi
