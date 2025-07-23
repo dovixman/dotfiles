@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-REPO="github.com/dovixman/dotfiles"
+REPO="github.com/davidfuentes/dotfiles" # cambia esto por tu repo real
 
 log() { echo "🛠️  $1"; }
 
@@ -9,7 +9,13 @@ log() { echo "🛠️  $1"; }
 if ! command -v brew &>/dev/null; then
   log "Instalando Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv || /home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  
+  # Cargar Homebrew en la sesión actual
+  if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 else
   log "Homebrew ya está instalado."
 fi
@@ -22,11 +28,17 @@ else
   log "chezmoi ya está instalado."
 fi
 
-# --- Init dotfiles ---
+# --- Solo clonar, no aplicar aún ---
 if [ ! -d "$HOME/.local/share/chezmoi" ]; then
-  log "Clonando y aplicando dotfiles desde $REPO..."
-  chezmoi init "$REPO" --prompt
-  chezmoi apply
+  log "Clonando dotfiles desde $REPO..."
+  chezmoi init "$REPO"
+  
+  log "✅ Dotfiles clonados"
+  log ""
+  log "🔄 SIGUIENTE PASO:"
+  log "   1. Reinicia tu terminal"
+  log "   2. Ejecuta: chezmoi apply"
+  log "   3. Responde las preguntas para configurar tus templates"
 else
   log "chezmoi ya está inicializado."
 fi
