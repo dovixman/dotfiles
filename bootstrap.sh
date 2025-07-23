@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-REPO="github.com/davidfuentes/dotfiles" # cambia esto por tu repo real
+REPO="github.com/dovixman/dotfiles"
 
 log() { echo "🛠️  $1"; }
 
