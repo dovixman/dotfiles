@@ -1,1 +1,2 @@
 keybind = ctrl+z=close_surface
+keybind = shift+enter=text:\n
