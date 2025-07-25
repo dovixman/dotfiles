@@ -17,7 +17,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 
-sketchybar --bar position=top height=50 blur_radius=30 color=$BAR_COLOR
+sketchybar --bar position=right width=60 blur_radius=30 color=$BAR_COLOR
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -51,7 +51,7 @@ do
              --set space.$sid space=$sid                                 \
                               icon=$sid                                  \
                               label.font="sketchybar-app-font:Regular:16.0" \
-                              label.padding_right=20                     \
+                              label.padding_right=4                      \
                               label.y_offset=-1                          \
                               script="$PLUGIN_DIR/space.sh"              \
              --subscribe space.$sid mouse.clicked
