@@ -11,12 +11,12 @@ ARCH="$(uname -m)"
 if ! command -v brew &>/dev/null; then
   echo "📦 Instalando Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-  # Añadir al PATH (Apple Silicon por defecto)
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   echo "✅ Homebrew ya instalado"
 fi
+
+# Añadir al PATH (Apple Silicon por defecto)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # 1.5. Ejecutar Brewfile si existe
 if [ -f "./Brewfile" ]; then
@@ -42,12 +42,13 @@ else
 fi
 
 # 3. Inicializar y aplicar dotfiles desde tu repositorio
-echo "📁 Clonando y aplicando dotfiles..."
 if [ -d "$HOME/.local/share/chezmoi" ]; then
-  echo "⚠️ Ya hay una configuración de chezmoi inicializada. Omitiendo init."
+  echo "⚠️ Ya hay una configuración de chezmoi inicializada. Aplicando cambios..."
+  cd "$HOME/.local/share/chezmoi" && git pull origin main
+  chezmoi apply --verbose
 else
   echo "📁 Clonando y aplicando dotfiles..."
-  chezmoi init https://github.com/dovixman/dotfiles.git
+  chezmoi init --apply https://github.com/dovixman/dotfiles.git
 fi
 
 chezmoi apply --verbose

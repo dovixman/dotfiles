@@ -11,8 +11,11 @@ if [ "$SHELL" != "$(which fish)" ]; then
 fi
 
 # Fisher
-if ! fish -c "type -q fisher"; then
+if ! fish -c "type -q fisher" 2>/dev/null; then
+  echo "📦 Instalando Fisher..."
   fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
+else
+  echo "✅ Fisher ya instalado"
 fi
 
 # Fisher plugins
