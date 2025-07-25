@@ -3,11 +3,11 @@ set -e
 
 echo "🚀 Iniciando instalación de entorno..."
 
-# Detectar sistema
+# Detect system
 OS="$(uname -s)"
 ARCH="$(uname -m)"
 
-# 1. Instalar Homebrew si no existe
+# Install Homebrew if not present
 if ! command -v brew &>/dev/null; then
   echo "📦 Instalando Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -15,17 +15,17 @@ else
   echo "✅ Homebrew ya instalado"
 fi
 
-# Añadir al PATH (Apple Silicon por defecto)
+# Add to PATH (Apple Silicon default)
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# 1.5. Ejecutar Brewfile si existe
+# Run Brewfile if exists
 if [ -f "./Brewfile" ]; then
   echo "📦 Instalando paquetes desde Brewfile..."
   brew bundle --file=./Brewfile
 fi
 
-# 2. Instalar paquetes necesarios
-# Instalar git solo si falta
+# Install required packages
+# Install git if missing
 if ! command -v git &>/dev/null; then
   echo "🔧 Instalando git…"
   brew install git
@@ -33,7 +33,7 @@ else
   echo "✅ git ya instalado"
 fi
 
-# Instalar chezmoi solo si falta
+# Install chezmoi if missing
 if ! command -v chezmoi &>/dev/null; then
   echo "🔧 Instalando chezmoi…"
   brew install chezmoi
@@ -41,7 +41,7 @@ else
   echo "✅ chezmoi ya instalado"
 fi
 
-# 3. Inicializar y aplicar dotfiles desde tu repositorio
+# Initialize and apply dotfiles from repository
 if [ -d "$HOME/.local/share/chezmoi" ]; then
   echo "⚠️ Ya hay una configuración de chezmoi inicializada. Aplicando cambios..."
   chezmoi update --verbose

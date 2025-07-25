@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Verificar que mise esté instalado
+# Verify mise is installed
 if ! command -v mise &>/dev/null; then
   echo "⚠️ mise no está disponible en el PATH. Verifica que esté instalado correctamente."
   exit 1
 fi
 
-# mise 
+# Configure mise
 echo "🔧 Configurando mise..."
 mise use -g usage
 mise completion fish > ~/.config/fish/completions/mise.fish
 
-# Languages
+# Install programming languages
 echo "📦 Instalando lenguajes con mise..."
 mise use --global go@latest
 mise use --global python@latest

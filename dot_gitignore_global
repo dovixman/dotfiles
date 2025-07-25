@@ -99,3 +99,7 @@ temp/
 
 # Local documentation
 *local.md
+*local.json
+
+# Claude Code
+CLAUDE.md

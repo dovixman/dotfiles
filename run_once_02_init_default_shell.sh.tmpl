@@ -10,7 +10,7 @@ if [ "$SHELL" != "$(which fish)" ]; then
   chsh -s "$(which fish)"
 fi
 
-# Fisher
+# Install Fisher plugin manager
 if ! fish -c "type -q fisher" 2>/dev/null; then
   echo "📦 Instalando Fisher..."
   fish -c 'curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher'
@@ -18,5 +18,5 @@ else
   echo "✅ Fisher ya instalado"
 fi
 
-# Fisher plugins
+# Update Fisher plugins
 fish -c 'fisher update'
