@@ -1,3 +1,6 @@
+# Custom taps
+tap "FelixKratz/formulae"
+
 # Core tools
 brew "wget"
 brew "curl"
@@ -35,7 +38,7 @@ brew "k9s"
 brew "neovim"
 
 # Window Management & Status Bar
-brew "nikitabobko/tap/aerospace"
+cask "nikitabobko/tap/aerospace"
 brew "sketchybar"
 
 # Casks
