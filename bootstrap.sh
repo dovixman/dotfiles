@@ -44,8 +44,7 @@ fi
 # 3. Inicializar y aplicar dotfiles desde tu repositorio
 if [ -d "$HOME/.local/share/chezmoi" ]; then
   echo "⚠️ Ya hay una configuración de chezmoi inicializada. Aplicando cambios..."
-  cd "$HOME/.local/share/chezmoi" && git pull origin main
-  chezmoi apply --verbose
+  chezmoi update --verbose
 else
   echo "📁 Clonando y aplicando dotfiles..."
   chezmoi init --apply https://github.com/dovixman/dotfiles.git
