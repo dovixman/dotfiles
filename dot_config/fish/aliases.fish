@@ -5,3 +5,6 @@ alias src='source $HOME/.config/fish/config.fish'
 
 # Alias for togo task manager
 alias tasks='togo'
+
+# Alias for chezmoi dotfile manager
+alias dot='chezmoi'
