@@ -168,10 +168,4 @@ inherit-env-vars = true
 [exec.env-vars]
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
-[[exec-on-workspace-change]]
-exec = [
-    '/opt/homebrew/bin/sketchybar',
-    '--trigger',
-    'aerospace_workspace_change',
-    'FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
+exec-on-workspace-change = '/opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
