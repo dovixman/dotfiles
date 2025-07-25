@@ -4,7 +4,11 @@
 if ! grep -q "$(which fish)" /etc/shells; then
   echo "$(which fish)" | sudo tee -a /etc/shells
 fi
-chsh -s "$(which fish)"
+
+if [ "$SHELL" != "$(which fish)" ]; then
+  echo "🔁 Cambiando shell por defecto a fish..."
+  chsh -s "$(which fish)"
+fi
 
 # Fisher
 if ! fish -c "type -q fisher"; then

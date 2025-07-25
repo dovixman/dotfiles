@@ -1,46 +1,55 @@
 #!/bin/bash
 set -e
 
-REPO="github.com/dovixman/dotfiles"
+echo "🚀 Iniciando instalación de entorno..."
 
-log() { echo "🛠️  $1"; }
+# Detectar sistema
+OS="$(uname -s)"
+ARCH="$(uname -m)"
 
-# --- Install Homebrew ---
+# 1. Instalar Homebrew si no existe
 if ! command -v brew &>/dev/null; then
-  log "Instalando Homebrew..."
+  echo "📦 Instalando Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
-  # Cargar Homebrew en la sesión actual
-  if [[ -f "/opt/homebrew/bin/brew" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  elif [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  fi
+
+  # Añadir al PATH (Apple Silicon por defecto)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
-  log "Homebrew ya está instalado."
+  echo "✅ Homebrew ya instalado"
 fi
 
-# --- Install chezmoi ---
+# 1.5. Ejecutar Brewfile si existe
+if [ -f "./Brewfile" ]; then
+  echo "📦 Instalando paquetes desde Brewfile..."
+  brew bundle --file=./Brewfile
+fi
+
+# 2. Instalar paquetes necesarios
+# Instalar git solo si falta
+if ! command -v git &>/dev/null; then
+  echo "🔧 Instalando git…"
+  brew install git
+else
+  echo "✅ git ya instalado"
+fi
+
+# Instalar chezmoi solo si falta
 if ! command -v chezmoi &>/dev/null; then
-  log "Instalando chezmoi..."
+  echo "🔧 Instalando chezmoi…"
   brew install chezmoi
 else
-  log "chezmoi ya está instalado."
+  echo "✅ chezmoi ya instalado"
 fi
 
-# --- Solo clonar, no aplicar aún ---
-if [ ! -d "$HOME/.local/share/chezmoi" ]; then
-  log "Clonando dotfiles desde $REPO..."
-  chezmoi init "$REPO"
-  
-  log "✅ Dotfiles clonados"
-  log ""
-  log "🔄 SIGUIENTE PASO:"
-  log "   1. Reinicia tu terminal"
-  log "   2. Ejecuta: chezmoi apply"
-  log "   3. Responde las preguntas para configurar tus templates"
+# 3. Inicializar y aplicar dotfiles desde tu repositorio
+echo "📁 Clonando y aplicando dotfiles..."
+if [ -d "$HOME/.local/share/chezmoi" ]; then
+  echo "⚠️ Ya hay una configuración de chezmoi inicializada. Omitiendo init."
 else
-  log "chezmoi ya está inicializado."
+  echo "📁 Clonando y aplicando dotfiles..."
+  chezmoi init https://github.com/dovixman/dotfiles.git
 fi
 
-log "✅ Bootstrap completo."
+chezmoi apply --verbose
+
+echo "✅ Entorno configurado completamente."
