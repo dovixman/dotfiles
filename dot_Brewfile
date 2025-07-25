@@ -34,11 +34,16 @@ brew "k9s"
 # Productivity
 brew "neovim"
 
+# Window Management & Status Bar
+brew "nikitabobko/tap/aerospace"
+brew "sketchybar"
+
 # Casks
 cask "arc"
 cask "raycast"
 cask "maccy"
 cask "docker"
 cask "font-hack-nerd-font"
+cask "sf-symbols"
 cask "ghostty"
 cask "logi-options+"

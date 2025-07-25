@@ -1,5 +1,7 @@
 README.md
 LICENSE
+.claude/
+.git/
 .gitignore
 Dockerfile
 key.txt.age
