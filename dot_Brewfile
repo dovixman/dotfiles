@@ -37,7 +37,6 @@ brew "neovim"
 # Casks
 cask "arc"
 cask "raycast"
-cask "espanso"
 cask "maccy"
 cask "caffeine"
 cask "docker"
