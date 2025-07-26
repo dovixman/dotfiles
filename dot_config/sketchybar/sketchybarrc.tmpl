@@ -17,7 +17,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 
-sketchybar --bar position=right width=60 blur_radius=30 color=$BAR_COLOR
+sketchybar --bar position=right width=200 blur_radius=30 color=$BAR_COLOR
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -25,8 +25,8 @@ sketchybar --bar position=right width=60 blur_radius=30 color=$BAR_COLOR
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
+  padding_left=8
+  padding_right=8
   icon.font="SF Pro:Semibold:15.0"
   label.font="SF Pro:Semibold:15.0"
   icon.color=$ICON_COLOR
