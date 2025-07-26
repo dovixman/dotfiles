@@ -17,7 +17,7 @@ ITEM_DIR="$CONFIG_DIR/items"
 source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 source "$CONFIG_DIR/icons.sh" # Loads all defined icons
 
-sketchybar --bar position=right height=30 blur_radius=30 color=$BAR_COLOR
+sketchybar --bar position=top height=40 blur_radius=30 color=$BAR_COLOR
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -45,24 +45,32 @@ sketchybar --default "${default[@]}"
 
 sketchybar --add event aerospace_workspace_change
 
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=0x44ffffff \
-        background.corner_radius=5 \
-        background.height=20 \
+# Define constant array of monitor IDs
+MONITORS=(1 2)
+
+# Loop through each monitor
+for monitor in "${MONITORS[@]}"; do
+  for sid in $(aerospace list-workspaces --monitor "$monitor"); do
+    sketchybar --add space space.$sid center \
+      --subscribe space.$sid aerospace_workspace_change \
+      --set space.$sid \
+        space=$sid \
+        display="$monitor" \
         background.drawing=off \
-        label="$sid" \
+        icon=$sid \
+        label.font="sketchybar-app-font:Regular:16.0" \
+        label.padding_right=20 \
+        label.y_offset=-1 \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+  done
 done
 
 ##### Adding Left Items #####
 # We add some regular items to the left side of the bar, where
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item chevron left                              \
+sketchybar --add item chevron bottom                              \
            --set chevron icon=                                \
                          icon.font="Hack Nerd Font:Regular:16.0" \
                          label.drawing=off                       \
