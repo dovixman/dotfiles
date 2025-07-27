@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Install ktx - Kubernetes context switcher
+echo "🔧 Configurando Kubectx..."
+
+mkdir -p ~/.config/fish/completions
+ln -s /opt/kubectx/completion/kubectx.fish ~/.config/fish/completions/
+ln -s /opt/kubectx/completion/kubens.fish ~/.config/fish/completions/
+
+echo "✅ Servicios de entorno instalados"

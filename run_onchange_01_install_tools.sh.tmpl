@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Verify mise is installed
+if ! command -v mise &>/dev/null; then
+  echo "⚠️ mise no está disponible en el PATH. Verifica que esté instalado correctamente."
+  exit 1
+fi
+
+# Configure mise
+echo "🔧 Configurando mise..."
+mise use -g usage
+mise completion fish > ~/.config/fish/completions/mise.fish
+
+# Install programming languages
+echo "📦 Instalando lenguajes con mise..."
+mise use --global go@latest
+mise use --global python@latest
+mise use --global node@latest
+mise use --global java@latest
+
+# Install togo Tasks
+echo "🔧 Configurando tasks (togo)..."
+go install github.com/prime-run/togo@latest
+
+# Install Claude Code CLI
+echo "🔧 Configurando Claude Code..."
+if ! command -v claude &>/dev/null; then
+  echo "📦 Instalando Claude Code CLI..."
+  
+  # Check if npm is available
+  if ! command -v npm &>/dev/null; then
+    echo "⚠️ npm no está disponible. Asegúrate de que Node.js esté instalado."
+    exit 1
+  fi
+  
+  # Install globally via npm
+  npm install -g @anthropic-ai/claude-code
+  
+  if command -v claude &>/dev/null; then
+    echo "✅ Claude Code CLI instalado correctamente"
+  else
+    echo "❌ Error al instalar Claude Code CLI"
+    exit 1
+  fi
+else
+  echo "✅ Claude Code CLI ya instalado"
+fi
+
+# Install Sketchybar deps
+echo "🔨Instalando fuentes sketchybar-app-front..."
+curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.23/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+
+echo "🔨Instalando SbarLua..."
+git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/
+
+echo "🔨Build deps..."
+cd $HOME/.config/sketchybar/helpers && make all
+
+echo "✅ Herramientas de entorno configuradas"

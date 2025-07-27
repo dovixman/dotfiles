@@ -21,6 +21,7 @@ brew "mise"
 brew "yq"
 brew "jq"
 brew "zoxide"
+brew "bat"
 
 # Development
 brew "lazygit"
@@ -32,6 +33,7 @@ brew "starship"
 
 # Kubernetes / DevOps
 brew "kubectl"
+brew "kubectx"
 brew "k9s"
 
 # Productivity
@@ -41,6 +43,15 @@ brew "neovim"
 cask "nikitabobko/tap/aerospace"
 brew "sketchybar"
 brew "borders"
+
+# Developer tools
+cask "visual-studio-code"
+cask "jetbrains-toolbox"
+cask "goland"
+cask "pycharm"
+
+# Developer languages
+brew "lua"
 
 # Casks
 cask "arc"
