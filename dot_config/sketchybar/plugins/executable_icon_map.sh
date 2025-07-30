@@ -5,7 +5,7 @@ function icon_map() {
  "Live")
    icon_result=":ableton:"
    ;;
- "Activity Monitor")
+ "Activity Monitor" | "Monitor de Actividad")
    icon_result=":activity_monitor:"
    ;;
  "Adobe Bridge")
@@ -285,7 +285,8 @@ function icon_map() {
    icon_result=":gear:"
    ;;
  "Ghostty")
-   icon_result=":ghostty:"
+  #  icon_result=":ghostty:"
+    icon_result=":terminal:"
    ;;
  "GitHub Desktop")
    icon_result=":git_hub:"
