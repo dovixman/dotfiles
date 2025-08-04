@@ -1,0 +1,43 @@
+# Navegación con ventanas (focus)
+lalt - h : aerospace focus left
+lalt - j : aerospace focus down
+lalt - k : aerospace focus up
+lalt - l : aerospace focus right
+
+# Mover ventanas
+lalt + shift - h : aerospace move left
+lalt + shift - j : aerospace move down
+lalt + shift - k : aerospace move up
+lalt + shift - l : aerospace move right
+
+# Resize
+# lalt + shift - minus : aerospace resize smart -50
+# lalt + shift - equal : aerospace resize smart +50
+
+# Layouts
+# lalt - slash : aerospace layout tiles horizontal vertical
+# lalt - comma : aerospace layout accordion horizontal vertical
+
+# Workspaces (cambiar)
+lalt - 1 : aerospace workspace 1
+lalt - 2 : aerospace workspace 2
+lalt - 3 : aerospace workspace 3
+lalt - 4 : aerospace workspace 4
+lalt - 5 : aerospace workspace 5
+lalt - 6 : aerospace workspace 6
+
+# Workspaces (mover ventana)
+lalt + shift - 1 : aerospace move-node-to-workspace --focus-follows-window 1
+lalt + shift - 2 : aerospace move-node-to-workspace --focus-follows-window 2
+lalt + shift - 3 : aerospace move-node-to-workspace --focus-follows-window 3
+lalt + shift - 4 : aerospace move-node-to-workspace --focus-follows-window 4
+lalt + shift - 5 : aerospace move-node-to-workspace --focus-follows-window 5
+lalt + shift - 6 : aerospace move-node-to-workspace --focus-follows-window 6
+
+# Workspace rápido
+# lalt - tab : aerospace workspace-back-and-forth
+# lalt + shift - tab : aerospace move-workspace-to-monitor --wrap-around next
+
+# Modo 'service'
+# lalt + shift - semicolon : aerospace mode service
+

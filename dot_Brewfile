@@ -43,6 +43,7 @@ brew "neovim"
 cask "nikitabobko/tap/aerospace"
 brew "sketchybar"
 brew "borders"
+brew "koekeishiya/formulae/skhd"
 
 # Developer tools
 cask "visual-studio-code"

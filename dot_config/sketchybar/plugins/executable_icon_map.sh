@@ -366,6 +366,9 @@ function icon_map() {
  "Kakoune")
    icon_result=":kakoune:"
    ;;
+ "Karabiner" | "Karabiner-Elements")
+   icon_result=":keyboard:"
+   ;;
  "KeePassXC")
    icon_result=":kee_pass_x_c:"
    ;;
