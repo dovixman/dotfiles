@@ -1,0 +1,3 @@
+[submodule "dot_claude"]
+	path = dot_claude
+	url = git@github.com:dovixman/dotfiles-claude.git
