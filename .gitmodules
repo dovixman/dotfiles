@@ -1,3 +1,1 @@
-[submodule "dot_claude"]
-	path = external_dot_claude
-	url = git@github.com:dovixman/dotfiles-claude.git
+
