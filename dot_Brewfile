@@ -26,6 +26,7 @@ brew "bat"
 # Development
 brew "lazygit"
 brew "tmux"
+brew "gh"
 
 # Shell & prompt
 brew "fish"
