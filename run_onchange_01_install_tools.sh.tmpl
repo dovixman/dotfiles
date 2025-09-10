@@ -47,6 +47,30 @@ else
   echo "✅ Claude Code CLI ya instalado"
 fi
 
+# Install OpenCode CLI
+echo "🔧 Configurando OpenCode..."
+if ! command -v opencode &>/dev/null; then
+  echo "📦 Instalando OpenCode CLI..."
+
+  # Check if curl is available
+  if ! command -v curl &>/dev/null; then
+    echo "⚠️ curl no está disponible. Asegúrate de que curl esté instalado."
+    exit 1
+  fi
+
+  # Install globally
+  curl -fsSL https://opencode.ai/install | bash
+
+  if command -v opencode &>/dev/null; then
+    echo "✅ OpenCode CLI instalado correctamente"
+  else
+    echo "❌ Error al instalar OpenCode CLI"
+    exit 1
+  fi
+else
+  echo "✅ OpenCode CLI ya instalado"
+fi
+
 # Install Sketchybar deps
 echo "🔨Instalando fuentes sketchybar-app-front..."
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.39/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
